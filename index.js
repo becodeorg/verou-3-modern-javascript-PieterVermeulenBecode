@@ -16,12 +16,10 @@ const citiesChanged=(countryData)=>{
     fetchPicture();
     changeTitle();
 }
-
 const changeTitle=()=>{
     const stad =getCityName();
     document.getElementById("titel").innerHTML="What is the weather in <span class='bold'>"+stad+"</span>"     
 }
-
 const createCityList=(countryData)=>{
     const landenLijst=document.getElementById("landen");  
     document.getElementById("steden").innerHTML="<option>Choose the city</option>";
@@ -41,7 +39,6 @@ const createCityListOptions=(countryData,i)=>{
         document.getElementById("steden").appendChild(newOption);
     }
 }
-
 const getLandCode=(countryData)=>{        
     const landenLijst=document.getElementById("landen");    
     for(let i=0;i<countryData.length;i++){
@@ -51,6 +48,17 @@ const getLandCode=(countryData)=>{
             return landCode;
         }
     }
+}
+const createCountryList=(countryData)=>{
+    for(let i=0;i<countryData.length;i++){            
+        const newOption=document.createElement("option");
+        newOption.innerText=countryData[i].country;
+        document.getElementById("landen").appendChild(newOption);
+    }        
+}
+const getCityName=()=>{
+    const cityList=document.getElementById("steden");    
+    return cityList.value;
 }
 
 const fetchPicture=()=>{
@@ -94,17 +102,4 @@ const fetchAllCountries= async()=> {
         console.log(error);  
         console.log("their was an error with fetchAllCountries function")
     });
-}
-
-const createCountryList=(countryData)=>{
-    for(let i=0;i<countryData.length;i++){            
-        const newOption=document.createElement("option");
-        newOption.innerText=countryData[i].country;
-        document.getElementById("landen").appendChild(newOption);
-    }        
-}
-
-const getCityName=()=>{
-    const cityList=document.getElementById("steden");    
-    return cityList.value;
 }
