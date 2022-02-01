@@ -29,14 +29,17 @@ const createCityList=(countryData)=>{
    for(let i=0;i<countryData.length;i++){
        let landNaam=countryData[i].country;   
        if(landenLijst.value==landNaam){        
-            for(let b=0;b<=countryData[i].cities.length;b++){
-                const newOption=document.createElement("option")
-                newOption.innerText=countryData[i].cities[b];
-                document.getElementById("steden").appendChild(newOption);
-            }
+            createCityListOptions(countryData,i);
             document.getElementById("steden").focus();
         }
     }  
+}
+const createCityListOptions=(countryData,i)=>{
+    for(let b=0;b<=countryData[i].cities.length;b++){
+        const newOption=document.createElement("option")
+        newOption.innerText=countryData[i].cities[b];
+        document.getElementById("steden").appendChild(newOption);
+    }
 }
 
 const getLandCode=(countryData)=>{        
@@ -138,7 +141,6 @@ const getFirstFiveDays=()=>{
         day=daymonth.nextDay;
         month=daymonth.nextMonth;        
     }
-    console.log(firstFiveDays);
     return firstFiveDays;
 }
 
