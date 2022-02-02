@@ -1,5 +1,6 @@
 import Data from "../data.gitignore/config.js";
 import displayWeather from "../displayWeather.js";
+import "./style.scss";
 window.onload = ()=> {
       
     fetchAllCountries();
